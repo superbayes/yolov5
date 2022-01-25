@@ -1,0 +1,5 @@
+train: ../logoDect6/train/images
+val: ../logoDect6/valid/images
+
+nc: 6
+names: ['cctv1', 'guangdong', 'hunan', 'shanghai', 'youku', 'zhejiang']
