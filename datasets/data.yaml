@@ -1,0 +1,5 @@
+train: ../hand_20220120/train/images
+val: ../hand_20220120/valid/images
+
+nc: 4
+names: ['hand1','hand2','hand3','hand4']
