@@ -9,3 +9,4 @@ python export.py --weights yolov5s.pt --include torchscript onnx tflite --train
 python export.py --weights runs/train/exp/weights/best.pt --include torchscript onnx tflite --train
 
 python -m onnxsim yolov5s.onnx yolov5s-sim.onnx
+python -m onnxsim runs/train/exp/weights/best.onnx runs/train/exp/weights/best-sim.onnx
