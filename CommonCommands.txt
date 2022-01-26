@@ -6,6 +6,7 @@ conda activate yolo_37
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 python export.py --weights yolov5s.pt --include torchscript onnx tflite --train
+python export.py --include onnx --weight path/to/x.pt --img 640 --train --simplify
 python export.py --weights runs/train/exp/weights/best.pt --include torchscript onnx tflite --train --simplify
 
 python -m onnxsim yolov5s.onnx yolov5s-sim.onnx
