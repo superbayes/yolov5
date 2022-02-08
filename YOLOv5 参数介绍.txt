@@ -1,0 +1,65 @@
+train.py
+--weigths: 指的是训练好的网络模型，用来初始化网络权重
+
+--cfg：指的是网络结构
+
+--data：训练数据路径
+
+--hyp: 训练网络的一些超参数设置
+
+--epochs：训练迭代次数
+
+--batch-size：每次喂给神经网络的图片数目
+
+--imgsz：训练图片尺寸
+
+--rect： 是否采用矩形训练
+
+--resume： 指定你之前训练的网络模型，想继续训练这个模型
+
+--nosave： 只保留最终网络模型
+
+--noval：是否只在最后一次测试网络模型
+
+--noautoanchor：是否采用锚点
+
+--evolve：是否寻找最优参数
+
+--bucket：没用了
+
+--cache：是否对图片进行缓存，加快训练
+
+--image-weights：测试过程中，图像的那些测试地方不太好，对这些不太好的地方加权重
+
+--device：训练网络的设备cpu还是gpu
+
+--multi-scale：图片尺度变换
+
+--single-cls：训练数据集是单类别还是多类别
+
+--adam：是否采用adam
+
+--sync-bn：分布式训练
+
+--workers: 多线程训练
+
+--project：训练结果保存路径
+
+--name： 训练结果保存文件名
+
+--exist-ok： 覆盖掉上一次的结果，不新建训练结果文件
+
+--quad：在dataloader时采用什么样的方式读取我们的数据
+
+--linear-lr：按照线性的方式去调整学习率
+
+--label-smoothing： 对标签平滑，防止过拟合
+
+-patience：没用过，这里感觉意思就是训练到oatience次数时停止
+
+--freeze：冻结哪些层，不去更新训练这几层的参数
+
+--save-period：训练多少次保存一次网络模型
+
+--local_rank：分布式训练
+ 【来源：https://python.iitter.com/other/151147.html，转载请注明】
