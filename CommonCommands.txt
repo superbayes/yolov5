@@ -20,6 +20,7 @@ python detect.py --weights runs/train/exp/weights/best.pt --source imageMy
 python detect.py --weights runs/train/exp/weights/best.pt --source datasets/yolo_dataset/test/images --save-txt
 
 tensorboard --logdir runs/train
+tensorboard --logdir ~/../hy-tmp/yolo/yolov5/runs/train/exp2
 cp Arial.ttf /root/.config/Ultralytics/Arial.ttf
 #查看当前目录下文件个数
 ls -l |grep "^-"|wc -l
