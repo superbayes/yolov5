@@ -17,6 +17,8 @@ python -m onnxsim yolov5s.onnx yolov5s-sim.onnx
 python -m onnxsim runs/train/exp/weights/best.onnx runs/train/exp/weights/best-sim.onnx
 
 python detect.py --weights runs/train/exp/weights/best.pt --source imageMy
+python detect.py --weights runs/train/exp/weights/best.pt --source datasets/yolo_dataset/test/images --save-txt
+
 tensorboard --logdir runs/train
 cp Arial.ttf /root/.config/Ultralytics/Arial.ttf
 
