@@ -3,11 +3,45 @@ conda env list
 conda create -n yolo_37 python=3.7 -y
 conda activate yolo_37
 
-
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
-#train model
-pyhton train.py --single-cls
+#train model=====================================================
+#只有一个分类
+python train.py --single-cls
+# 加具体的模型路径，则会从该模型的基础上继续训练
+python train.py --resume runs/exp0/weights/last.pt
+
+# 分布式,并行运算
+python -m torch.distributed.launch --nproc_per_node 2 train.py \
+    --weights ./models/yolov5m6.pt \
+    --cfg ./models/yolov5m6.yaml \
+    --data ./datasets/yolo_dataset/data.yaml \
+    --batch-size 32 --epochs 100  --imgsz 1280 --device 0,1 \
+    --single-cls \
+    --label-smoothing 0.1 \
+    --noautoanchor \
+    --image-weights \
+    --resume runs/exp4/weights/last.pt  #根据实际情况而定
+
+#使用yolov5x.pt
+python train.py \
+--single-cls \
+--label-smoothing 0.1 \
+--image-weights \
+--batch-size 50 \
+--device 0,1
+
+#使用yolov5m.pt train_hard
+python train.py \
+--single-cls \
+--label-smoothing 0.1 \
+--image-weights \
+--batch-size 120 \
+--device 0,1 \
+--noautoanchor 
+#train model=====================================================
+
+
 
 python export.py --weights yolov5s.pt --include torchscript onnx tflite --train
 python export.py --include onnx --weight path/to/x.pt --img 640 --train --simplify
@@ -16,12 +50,28 @@ python export.py --weights runs/train/exp/weights/best.pt --include torchscript 
 python -m onnxsim yolov5s.onnx yolov5s-sim.onnx
 python -m onnxsim runs/train/exp/weights/best.onnx runs/train/exp/weights/best-sim.onnx
 
-python detect.py --weights runs/train/exp/weights/best.pt --source imageMy
-python detect.py --weights runs/train/exp/weights/best.pt --source datasets/yolo_dataset/test/images --save-txt
+#模型预测
+python detect.py --weights runs/train/exp5/weights/best.pt \
+--source datasets/yolo_dataset/test/images \
+--save-txt --nosave
+
+#模型预测 train_hard
+python detect.py --weights runs/train/exp7/weights/best.pt \
+--source datasets/train_hard/yoloTest/hard \
+--save-txt --nosave
+#模型预测 train_easy
+python detect.py --weights runs/train/exp4/weights/best.pt \
+--source datasets/train_hard/yoloTest/easy \
+--save-txt --nosave
+#train_hard,train_easy合并
+cp ./runs/detect/exp/labels/*  ./runs/detect/exp2/labels/
+
+
 
 tensorboard --logdir runs/train
-tensorboard --logdir ~/../hy-tmp/yolo/yolov5/runs/train/exp2
 cp Arial.ttf /root/.config/Ultralytics/Arial.ttf
+
 #查看当前目录下文件个数
 ls -l |grep "^-"|wc -l
+
 pip3 install torch==1.10.2+cu113 torchvision==0.11.3+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html 
