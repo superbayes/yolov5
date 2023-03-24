@@ -29,7 +29,10 @@ python export.py --weights runs/train/exp/weights/best.pt --include  torchscript
 python -m onnxsim yolov5s.onnx yolov5s-sim.onnx
 python -m onnxsim runs/train/exp/weights/best.onnx runs/train/exp/weights/best-sim.onnx
 
-python detect.py --weights yolov5n.pt --data data/images/bus.jpg
+#下载模型
+wget https://ghproxy.com/https://github.com/ultralytics/yolov5/releases/download/v6.2/yolov5m.pt
+#官方预测
+python detect.py --weights yolov5m.pt --data data/images/bus.jpg
 python detect.py --weights runs/train/exp/weights/best.pt --source imageMy
 python detect.py --weights runs/train/exp/weights/best.pt --source datasets/yolo_dataset/test/images --save-txt
 
