@@ -1,0 +1,78 @@
+git clone -b 0my_competion20220212 https://github.com/superbayes/yolov5.git
+git clone https://ghproxy.com/https://github.com/ultralytics/yolov5.git //恒源云的clone方式
+git clone https://ghproxy.com/https://github.com/superbayes/yolov5.git
+
+cd yolov5/
+git checkout v6.2
+
+conda env list
+conda create -n yolo_37 python=3.7 -y
+conda activate yolo_37
+
+pip install ultralytics onnxruntime-gpu onnxsim -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install onnxruntime-gpu onnxsim -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip3 install torch==1.10.2+cu113 torchvision==0.11.3+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html 
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install setuptools==59.5.0
+pip install torchsummary onnxruntime onnxsim
+
+
+#train model
+python train.py --single-cls
+
+#导出模型
+python export.py --weights models/yolov5s.pt --include torchscript onnx --train --simplify
+python export.py --weights yolov5s.pt --include torchscript onnx tflite --train --opset 11
+python export.py --include onnx --weight path/to/x.pt --img 640 --train --simplify --opset 11
+python export.py --weights runs/train/exp/weights/best.pt --include  torchscript onnx --train --simplify --opset 11
+
+python -m onnxsim yolov5s.onnx yolov5s-sim.onnx
+python -m onnxsim runs/train/exp/weights/best.onnx runs/train/exp/weights/best-sim.onnx
+
+python detect.py --weights yolov5n.pt --data data/images/bus.jpg
+python detect.py --weights runs/train/exp/weights/best.pt --source imageMy
+python detect.py --weights runs/train/exp/weights/best.pt --source datasets/yolo_dataset/test/images --save-txt
+
+#查看训练指标
+tensorboard --logdir runs/train
+tensorboard --logdir ~/../hy-tmp/yolo/yolov5/runs/train/exp2
+cp Arial.ttf /root/.config/Ultralytics/Arial.ttf
+#查看当前目录下文件个数
+ls -l |grep "^-"|wc -l
+#压缩
+zip -q -r runs.zip runs/*
+#解压
+unzip dataset.zip -d ./
+#显存占用率
+nvidia-smi
+#磁盘占用率
+df -lh
+
+#tmux
+tmux new -s session1
+tmux a -t session1
+
+#数据集格式:
+---
+  |-train
+  |----|images
+  |----|labels
+  |-valid
+  |----|images
+  |----|labels
+  |-data.yaml
+   
+   
+#GitHub YOLOv5 开源代码项目系列讲解（四）------训练相关参数解释
+https://cloud.tencent.com/developer/article/1929255
+#手把手带你调参Yolo v5 (v6.1)（二）
+https://zhuanlan.zhihu.com/p/549163975
+
+#详细记录u版YOLOv5目标检测ncnn实现
+https://zhuanlan.zhihu.com/p/275989233
+#详细记录u版YOLOv5目标检测ncnn实现（第二版）
+https://zhuanlan.zhihu.com/p/471357671
+
+#如果缺少libglib2.0-0.so
+apt update
+apt-get install -y libglib2.0-0 libsm6 libxrender1 libxext6
