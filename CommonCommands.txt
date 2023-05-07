@@ -19,7 +19,7 @@ pip install torchsummary onnxruntime onnxsim
 
 
 #train model
-python train.py --single-cls
+python train.py --single-cls --label-smoothing 0.01
 
 #导出模型
 python export.py --weights models/yolov5s.pt --include torchscript onnx --train --simplify
