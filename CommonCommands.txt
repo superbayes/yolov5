@@ -66,8 +66,16 @@ tmux a -t session1
   |----|images
   |----|labels
   |-data.yaml
-   
-   
+#######################################################################  
+# data.yaml
+train: ./for_yolo/train/images
+val: ./for_yolo/val/images
+
+nc: 1
+names: ['0']
+
+
+#######################################################################
 #GitHub YOLOv5 开源代码项目系列讲解（四）------训练相关参数解释
 https://cloud.tencent.com/developer/article/1929255
 #手把手带你调参Yolo v5 (v6.1)（二）
