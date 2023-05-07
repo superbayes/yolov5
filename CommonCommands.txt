@@ -26,6 +26,8 @@ python export.py --weights models/yolov5s.pt --include torchscript onnx --train 
 python export.py --weights yolov5s.pt --include torchscript onnx tflite --train --opset 11
 python export.py --include onnx --weight path/to/x.pt --img 640 --train --simplify --opset 11
 python export.py --weights runs/train/exp/weights/best.pt --include  torchscript onnx --train --simplify --opset 11
+python export.py --weights runs/train/exp2/weights/best.pt --include  onnx --train --simplify --opset 12 --img 2560
+python export.py --weights runs/train/exp3/weights/best.pt --include  onnx --train --simplify --opset 12 --img 1920
 
 python -m onnxsim yolov5s.onnx yolov5s-sim.onnx
 python -m onnxsim runs/train/exp/weights/best.onnx runs/train/exp/weights/best-sim.onnx
