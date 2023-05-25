@@ -33,6 +33,7 @@ python -m onnxsim yolov5s.onnx yolov5s-sim.onnx
 python -m onnxsim runs/train/exp/weights/best.onnx runs/train/exp/weights/best-sim.onnx
 
 #下载模型
+wget https://ghproxy.com/https://github.com/ultralytics/yolov5/releases/download/v6.2/yolov5n.pt
 wget https://ghproxy.com/https://github.com/ultralytics/yolov5/releases/download/v6.2/yolov5s.pt
 wget https://ghproxy.com/https://github.com/ultralytics/yolov5/releases/download/v6.2/yolov5m.pt
 #官方预测
