@@ -2,13 +2,12 @@ git clone -b 0my_competion20220212 https://github.com/superbayes/yolov5.git
 git clone https://ghproxy.com/https://github.com/ultralytics/yolov5.git //恒源云的clone方式
 git clone https://ghproxy.com/https://github.com/superbayes/yolov5.git
 
-cd ../hy-tmp/
-cd yolov5/
-git checkout v6.2
+cd ../hy-tmp/ && git clone https://ghproxy.com/https://github.com/ultralytics/yolov5.git
+cd yolov5/ && git checkout v6.2
+
 
 conda env list
-conda create -n yolo_37 python=3.7 -y
-conda activate yolo_37
+conda create -n yolo_37 python=3.7 -y && conda activate yolo_37
 
 pip install ultralytics onnxruntime-gpu onnxsim -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install onnxruntime-gpu onnxsim -i https://pypi.tuna.tsinghua.edu.cn/simple
