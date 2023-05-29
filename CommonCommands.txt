@@ -47,7 +47,7 @@ cp Arial.ttf /root/.config/Ultralytics/Arial.ttf
 #查看当前目录下文件个数
 ls -l |grep "^-"|wc -l
 #压缩
-zip -q -r runs.zip runs/*
+zip -qr runs.zip runs/*
 #解压
 unzip dataset.zip -d ./
 #显存占用率
