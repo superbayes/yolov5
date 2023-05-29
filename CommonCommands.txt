@@ -75,8 +75,14 @@ val: ./for_yolo/val/images
 
 nc: 1
 names: ['0']
+#######################################################################
+# oss 登录
+oss login
+18001617113
+futech123456
 
-
+#上传zip
+oss cp mtdata.zip oss://datasets/
 #######################################################################
 #GitHub YOLOv5 开源代码项目系列讲解（四）------训练相关参数解释
 https://cloud.tencent.com/developer/article/1929255
