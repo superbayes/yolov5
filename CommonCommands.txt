@@ -83,6 +83,9 @@ futech123456
 
 #上传zip
 oss cp mtdata.zip oss://datasets/
+
+#上传数据集到/hy-tmp/目录下
+oss cp oss://datasets/个人数据.zip /hy-tmp/
 #######################################################################
 #GitHub YOLOv5 开源代码项目系列讲解（四）------训练相关参数解释
 https://cloud.tencent.com/developer/article/1929255
