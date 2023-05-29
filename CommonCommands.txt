@@ -89,6 +89,12 @@ oss cp mtdata.zip oss://datasets/
 
 #上传数据集到/hy-tmp/目录下
 oss cp oss://datasets/个人数据.zip /hy-tmp/
+
+#从hy-tmp 保存结果到 oss
+oss cp runs0529.zip oss://result/runs0529.zip
+
+#oss数据下载至win10端
+oss cp oss://result/runs0529.zip ./runs0529.zip
 #######################################################################
 #GitHub YOLOv5 开源代码项目系列讲解（四）------训练相关参数解释
 https://cloud.tencent.com/developer/article/1929255
