@@ -81,6 +81,9 @@ oss login
 18001617113
 futech123456
 
+#在个人数据中创建文件夹
+~# oss mkdir oss://datasets
+
 #上传zip
 oss cp mtdata.zip oss://datasets/
 
