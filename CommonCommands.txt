@@ -99,8 +99,12 @@ oss cp oss://result/runs0529.zip Z:\Xing.Ju\yolov5\runs\runs0529.zip
 #######################################################################
 #GitHub YOLOv5 开源代码项目系列讲解（四）------训练相关参数解释
 https://cloud.tencent.com/developer/article/1929255
+
 #手把手带你调参Yolo v5 (v6.1)（二）
 https://zhuanlan.zhihu.com/p/549163975
+
+#5000字多图长文预警！手把手带你调参Yolo v5（二）
+https://www.bilibili.com/read/cv22174952/
 
 #详细记录u版YOLOv5目标检测ncnn实现
 https://zhuanlan.zhihu.com/p/275989233
