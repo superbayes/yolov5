@@ -21,7 +21,7 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
             # x(bs,255,20,20) -> x(bs,20,20,255)
             feat = feat.permute(0, 2, 3, 1).contiguous()
             # 将形状从(bs, 20, 20, 255)转换为(bs, 20*20, 255)
-            feat = feat.view(feat.size(0), feat.size(1)*feat.size(2), feat.size(3))
+            feat = feat.view(feat.size(0), -1, feat.size(3))
             z.append(feat.sigmoid())
         return tuple(z)
 ######################################################################
