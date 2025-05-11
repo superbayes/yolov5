@@ -3,7 +3,11 @@ conda env list
 conda create -n yolo_37 python=3.7 -y
 conda activate yolo_3
 
+# 详细记录u版YOLOv5目标检测ncnn实现（第三版）
+https://zhuanlan.zhihu.com/p/606440867
+
 git clone https://github.com/ultralytics/yolov5.git
+cd yolov5
 git checkout v7.0
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 python export.py --weights yolov5n.pt --include torchscript onnx
